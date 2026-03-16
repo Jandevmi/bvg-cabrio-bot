@@ -1,0 +1,4 @@
+# Ignore environment variables and secrets
+.env
+.idea
+config.json

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bvg-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bvg-monitor
+  template:
+    metadata:
+      labels:
+        app: bvg-monitor
+    spec:
+      containers:
+      - name: bvg-monitor
+        image: registry.datexis.com/jfrick/bvg-monitor:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+          limits:
+            memory: "128Mi"
+            cpu: "1"
+      imagePullSecrets:
+        - name: private-registry-auth
